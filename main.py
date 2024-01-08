@@ -1,28 +1,31 @@
 import os
 import requests as r
 
-# add domain extention here as much as you can
+# domain extensions
 domains = {
-  # domain extentions
-".com",".net",".in",".org",".pro",".live",".uk.org",".me",".pro",".edu",".mit.edu",".mit",".uk",".eu.org",".in"
+  ".com",".net",".in",".org",
+  ".pro",".live",".uk.org",
+  ".me",".pro",".edu",
+  ".mit.edu",".mit",
+  ".uk",".eu.org",
+  ".in",".eu",".in.org",
+  ".dev",".to",".ml",".tk"
 }
 
 if __name__ == "__main__":
-  # change the input text if you want else leave it as it is
-  testName = input('enter name to test alternatives -> ')
+  # getting user input
+  domain_name_without_ex = input('enter domain without extension -> ')
 
-def checkDomain():
+def check_domain():
   for i in domains:
     try:
-      testStart = r.get(f"https://{testName}{i}")
+      testStart = r.get(f"https://{domain_name_without_ex}{i}")
       if testStart.status_code == 200:
-        # avilable message
+        # if avilable
         print(f"{testName}{i} - not-avilable \n")
     except:
-        # not avilable message
+        # if not avilable
       print(f"{testName}{i} - avilable \n")
 
 if __name__ == "__main__":
   checkDomain()
-  # 
-  print("end testing")
